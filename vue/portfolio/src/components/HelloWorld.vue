@@ -3,18 +3,34 @@
 </template>
 
 <script>
-import Terminal from "xterm";
+import {
+  CustomTerminal,
+  encodedName,
+  textInMiddleOfLine,
+  loadProjects,
+} from "../assets/Terminal.js";
 
 export default {
   name: "HelloWorld",
   mounted() {
+    console.log("Test1");
+    const terminal = new CustomTerminal();
     console.log(this.$refs.terminal);
-    var term = new Terminal();
-    console.log("test1");
-    term.open(this.$refs.terminal);
-    console.log("test2");
-    term.write("Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ");
-    console.log("test3");
+    terminal.loadTerminal(this.$refs.terminal);
+    // Remember to add terminal parameter to loadProjects()!
+    terminal.terminal.write("\x1b[1;92m" + encodedName);
+    terminal.terminal.writeln(
+      "\x1b[1;92m" +
+        textInMiddleOfLine(
+          " Software Developer, Cyber-Security Enthusiast & High School Senior ",
+          128
+        )
+    );
+    terminal.terminal.writeln(
+      "\x1b[1;92m" + "\nMy GitHub: https://github.com/BlakeTnr"
+    );
+    terminal.terminal.writeln("\x1b[1;92m" + "\nProjects:\n");
+    loadProjects(terminal);
   },
 };
 </script>
