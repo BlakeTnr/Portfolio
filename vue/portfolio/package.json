@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
-    "xterm": "^5.1.0"
+    "xterm": "^5.1.0",
+    "xterm-addon-web-links": "^0.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

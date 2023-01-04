@@ -1,6 +1,6 @@
 import { Terminal } from 'xterm'
 import { Project } from './Project.js'
-
+import { WebLinksAddon } from "xterm-addon-web-links";
 
 const encodedName = `
 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \r
@@ -19,7 +19,7 @@ class CustomTerminal {
     }
 
     loadTerminal(element) {
-        console.log(element)
+        this.terminal.loadAddon(new WebLinksAddon());
         this.terminal.open(element);
         this.fitToScreen();
         addEventListener("resize", () => {this.fitToScreen()});
@@ -81,7 +81,7 @@ function loadProjects(terminal) {
         
         terminal.terminal.writeln("\x1b[1;92m" + "   " + UnderlineWithSpaces(project.name))
         terminal.terminal.writeln("\x1b[1;92m" + "\t" + project.description + "\n")
-        terminal.terminal.writeln("\x1b[1;92m\x1b[1;4m" + "\t" + project.link + "\x1b[1;0m\n\n")
+        terminal.terminal.writeln("\x1b[1;92m" + "\t" + project.link + "\x1b[1;0m\n\n")
 
     })
     
