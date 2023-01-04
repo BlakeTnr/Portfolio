@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && powershell -Command \"(gc ./dist/index.html) -replace '\\\"/', '\\\"./' | Out-File -encoding ASCII ./dist/index.html\"",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
